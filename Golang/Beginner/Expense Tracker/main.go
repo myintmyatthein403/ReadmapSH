@@ -6,6 +6,7 @@ import (
   "os"
   "strings"
   "time"
+  "strconv"
 )
 
 type Expense struct {
@@ -27,7 +28,7 @@ func addExpense(split []string, data *[]Expense, counter int) int {
       }
     case "--amount":
       if i+1 < len(split) {
-        fmt.Sscanf(split[i+1], "%f", &amount)
+        amount, _ = strconv.ParseFloat(split[i+1], 64)
       }
     }
   }
